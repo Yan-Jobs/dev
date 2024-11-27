@@ -1,15 +1,70 @@
-# What is this?
+# Discord Vanity URL Sniper Bot
 
-The github.dev web-based editor is a lightweight editing experience that runs entirely in your browser. You can navigate files and source code repositories from GitHub, and make and commit code changes.
+This Discord bot allows users to monitor the availability of a specific vanity URL on Discord. The bot continuously checks if the specified vanity URL becomes available and sends real-time notifications when it does.
 
-There are two ways to go directly to a VS Code environment in your browser and start coding:
+## Features
 
-* Press the . key on any repository or pull request.
-* Swap `.com` with `.dev` in the URL. For example, this repo https://github.com/github/dev becomes http://github.dev/github/dev
+- **Vanity URL Monitoring**: Monitors the availability of a specified Discord vanity URL.
+- **Customizable Check Interval**: Users can set the delay between checks, allowing for personalized monitoring intervals.
+- **Real-Time Notifications**: Notifies users in the Discord channel when the vanity URL is available for use.
 
-Preview the gif below to get a quick demo of github.dev in action.
+## Requirements
 
-![github dev](https://user-images.githubusercontent.com/856858/130119109-4769f2d7-9027-4bc4-a38c-10f297499e8f.gif)
+- Python 3.x
+- Required Libraries:
+  - `discord.py` for Discord bot functionality
+  - `requests` for making HTTP requests
 
-# Why?
-It’s a quick way to edit and navigate code. It's especially useful if you want to edit multiple files at a time or take advantage of all the powerful code editing features of Visual Studio Code when making a quick change. For more information, see our [documentation](https://github.co/codespaces-editor-help).
+## Setup Instructions
+
+1. **Install Required Libraries**:
+   Make sure you have `discord.py` and `requests` installed. You can install them using pip:
+   ```bash
+   pip install discord.py requests
+   ```
+
+2. **Configure the Bot**:
+   - Replace the `token` variable in the script with your bot's token:
+     ```python
+     token = "YOUR_DISCORD_BOT_TOKEN"
+     ```
+
+3. **Run the Bot**:
+   - Start the bot by executing the script:
+     ```bash
+     python main.py
+     ```
+
+## How to Use the Bot
+
+1. **Initiate the Sniping Command**:
+   - In any Discord channel where the bot has access, type the command:
+     ```bash
+     !snipe
+     ```
+
+2. **Enter the Vanity URL**:
+   - The bot will prompt you to enter the desired vanity URL. For example:
+     ```bash
+     myvanityurl
+     ```
+
+3. **Set the Check Delay**:
+   - Next, the bot will ask how many seconds to wait between checks. Enter a number (e.g., `10`).
+
+4. **Monitoring Process**:
+   - The bot will continuously check the specified vanity URL and will notify you if it becomes available:
+     ```bash
+     Vanity URL is Available myvanityurl!
+     ```
+
+## Notes
+
+- **Format for Vanity URL**: Only enter the part after `discord.gg/` (e.g., if the URL is `https://discord.gg/myvanityurl`, just enter `myvanityurl`).
+- **Check Delay**: It’s advisable to choose a delay that is reasonable to avoid hitting Discord’s API rate limits. A delay between 5 to 30 seconds is recommended.
+- **Stopping the Sniping Process**: The monitoring will stop once the vanity URL becomes available. You can manually interrupt the bot if needed.
+
+## Troubleshooting
+
+- **Invalid Token**: Ensure you have provided a valid Discord bot token in the script.
+- **Permission Issues**: Make sure the bot has permission to read messages and send messages in the channel where the command is used.
